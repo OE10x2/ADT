@@ -23,5 +23,16 @@ public class TEST{
         System.out.println("JUST TESTING: " + queue.peek());
         while (!queue.isEmpty()) System.out.print(queue.dequeue() + " ");
         System.out.println();
+
+        MyArrayStack<Integer> stack = new MyArrayStack<>();
+        stack.push(new MyNode(9));
+        stack.push(new MyNode(6));
+        stack.push(new MyNode(7));
+        stack.push(new MyNode(8));
+        stack.push(new MyNode(9));
+        stack.pop();
+        System.out.println("JUST TESTING: " + stack.peek());
+        while (!stack.isEmpty()) System.out.print(stack.pop() + " ");
+        System.out.println();
     }
 }
