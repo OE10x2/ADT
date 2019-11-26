@@ -7,14 +7,13 @@ public class MyArrayList<T> implements ArrayList<T>{
 
     @Override
     public void addNode(Node n){
-        System.out.println(array[length]);
         array[length++] = new MyNode(n);
     }
 
     @Override
     public void insertNode(Node n, int i){
         for (int loop = length; loop > i; loop--) array[loop] = array[loop-1];
-        array[i].setValue(n);
+        array[i] = new MyNode(n);
         length++;
     }
 
@@ -22,9 +21,7 @@ public class MyArrayList<T> implements ArrayList<T>{
     public void removeNode(Node n){
         int index = -1;
         for (int i = 0; i < length; i++){
-            if (array[i] == n){
-                index = i;
-            }
+            if (array[i].equals(new MyNode(n))) index = i;
         }
         if (index == -1) return;
         for (int loop = index; loop < length - 1; loop++) array[loop] = array[loop + 1];
