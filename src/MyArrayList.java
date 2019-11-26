@@ -1,48 +1,60 @@
 public class MyArrayList<T> implements ArrayList<T>{
 
     private T data;
-    private int size = (int)1e8;
+    private int size = 100000002;
     private int length = 0;
-    private MyNode[] array = new MyNode[size];
+    private Node[] array = new Node[size];
 
     @Override
     public void addNode(Node n){
-        array[length++] = n;
+        array[length++].setValue(new MyNode(n));
     }
 
     @Override
     public void insertNode(Node n, int i){
         for (int loop = length; loop > i; loop--) array[loop] = array[loop-1];
-        array[i] = n;
+        array[i].setValue(n);
+        length++;
     }
 
     @Override
     public void removeNode(Node n){
-        for (int i = 0; i )
+        int index = -1;
+        for (int i = 0; i < length; i++){
+            if (array[i] == n){
+                index = i;
+            }
+        }
+        if (index == -1) return;
+        for (int loop = index; loop < length - 1; loop++) array[loop] = array[loop + 1];
+        length = Math.max(length - 1, 0);
     }
 
     @Override
-    public Node removeNode(int i) {
-        return null;
+    public Node<T> removeNode(int i){
+        for (int loop = i; loop < length - 1; loop++) array[loop] = array[loop + 1];
+        length = Math.max(length - 1, 0);
+        return null; //Successfully removed
     }
 
     @Override
-    public Node getNode(int i) {
-        return null;
+    public Node getNode(int i){
+        return array[i];
     }
 
     @Override
-    public Node getFirstNode() {
-        return null;
+    public Node getFirstNode(){
+        return array[0];
     }
 
     @Override
-    public Node getLastNode() {
-        return null;
+    public Node getLastNode(){
+        if (length == 0) return null;
+        return array[length-1];
     }
 
     @Override
-    public int size() {
-        return 0;
+    public int size(){
+        return length;
     }
 }
