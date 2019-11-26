@@ -3,11 +3,12 @@ public class MyArrayList<T> implements ArrayList<T>{
     private T data;
     private int size = 100000002;
     private int length = 0;
-    private Node[] array = new Node[size];
+    private MyNode[] array = new MyNode[size];
 
     @Override
     public void addNode(Node n){
-        array[length++].setValue(new MyNode(n));
+        System.out.println(array[length]);
+        array[length++] = new MyNode(n);
     }
 
     @Override
